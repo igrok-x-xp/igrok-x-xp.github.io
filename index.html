@@ -71,7 +71,6 @@
 <body>
     <div class="Main">
         <h1>Тестовое приложение</h1>
-        <img src="{{ url_for('static', filename='bot.png') }}" alt="">
         <p></p>
         <button class="btn f-btn">Тест отправки данных</button>
     </div>
@@ -86,10 +85,10 @@
 
     <script>
         let tg = window.Telegram.WebApp;
-        let idk = tg.initDataUnsafe
+        let dat_unsafe = tg.initDataUnsafe
 
 
-        displayObjectTree(tg.initDataUnsafe | {"Комментарий": "tg.initDataUnsafe пуст"})
+        displayObjectTree(dat_unsafe)
 
         console.log("tg.initDataUnsafe", tg.initDataUnsafe)
         console.log("tg", tg);
@@ -118,6 +117,8 @@
 
             tg.sendData(JSON.stringify(data));
         });
+
+
 
 
         // Ниже - навайбкожено
@@ -235,7 +236,7 @@
           nullValue: null
         };
 
-<!--        displayObjectTree(exampleObj);-->
+        displayObjectTree(exampleObj);
     </script>
 </body>
 </html>
