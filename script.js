@@ -76,23 +76,6 @@ async function get_api_result() {
     }
 }
 
-// Обработчик клика для api_btn
-api_btn.addEventListener("click", async () => {
-    let str;
-    let gain = 0;
-    output = document.getElementsByClassName('api_output')[0]
-    str_output = document.getElementsByClassName('api_output2')[0]
-    for (let index = 0; index < 100; index++) {
-        str = await get_api_result();
-        console.log(str)
-        if (str) {
-            gain += 1;
-            output.textContent = `Получено запросов: ${gain}`;
-            str_output.textContent = `Строка: ${str}`;
-        }
-    }
-    output.textContent = `Получено запросов: ${gain}/100`;
-});
 
 
 
