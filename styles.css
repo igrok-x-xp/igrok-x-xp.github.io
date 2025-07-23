@@ -39,7 +39,7 @@ img {
     background: var(--tg-theme-button-color);
 }
 
-form {
+.test-form {
     display: none;
     text-align: center;
 }
