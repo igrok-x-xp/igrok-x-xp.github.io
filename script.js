@@ -9,11 +9,13 @@ console.log("tg", tg);
 
 let fBtn = document.getElementsByClassName("f-btn")[0]
 let sBtn = document.getElementsByClassName("s-btn")[0]
+let api_btn = document.getElementsByClassName("api-btn")[0]
 
 fBtn.addEventListener("click", () => {
     document.getElementsByClassName("Main")[0].style.display = "none";
     document.getElementsByClassName("test-form")[0].style.display = "block";
 });
+
 
 
 sBtn.addEventListener("click", () => {
@@ -30,6 +32,41 @@ sBtn.addEventListener("click", () => {
 
     tg.sendData(JSON.stringify(data));
 });
+
+async function get_api_result() {
+    const api_link = 'https://www.random.org/strings/?num=1&len=12&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new';
+    try {
+        const response = await fetch(api_link);
+        if (!response.ok) {
+            throw new Error(`Ошибка HTTP: ${response.status}`);
+        }
+        const randomString = await response.text();
+//        console.log('Случайная строка:', randomString.trim());
+        return randomString.trim();
+    } catch (error) {
+        console.error('Ошибка запроса:', error);
+        return null;
+    }
+}
+
+// Обработчик клика для api_btn
+api_btn.addEventListener("click", async () => {
+    let str;
+    let gain = 0;
+    output = document.getElementsByClassName('api_output')[0]
+    str_output = document.getElementsByClassName('api_output2')[0]
+    for (let index = 0; index < 100; index++) {
+        str = await get_api_result();
+        console.log(str)
+        if (str) {
+            gain += 1;
+            output.textContent = `Получено запросов: ${gain}`;
+            str_output.textContent = `Строка: ${str}`;
+        }
+    }
+    output.textContent = `Получено запросов: ${gain}/100`;
+});
+
 
 
 
