@@ -25,8 +25,8 @@ api_btn.addEventListener("click", async () => {
     const str_output = document.querySelector('.api_output2');
     const progressBar = document.getElementsByClassName('progress-bar')[0];
 
-    const totalRequests = 100;
-    const batchSize = 10; // Число параллельных запросов
+    const totalRequests = 50;
+    const batchSize = 5; // Число параллельных запросов
     let successCount = 0;
 
     output.textContent = `Запущено 0/${totalRequests}...`;
