@@ -18,19 +18,45 @@ fBtn.addEventListener("click", () => {
 
 
 
-sBtn.addEventListener("click", () => {
-    let title = document.getElementsByClassName("title-inp")[0];
-    let description = document.getElementsByClassName("desc-inp")[0];
-    let text = document.getElementsByClassName("text-inp")[0];
 
+// Обработчик клика для api_btn
+api_btn.addEventListener("click", async () => {
+    const output = document.querySelector('.api_output');
+    const str_output = document.querySelector('.api_output2');
+    const progressBar = document.getElementsByClassName('progress-bar')[0];
 
-    let data = {
-        title: title.value,
-        desc: description.value,
-        text: text.value
+    const totalRequests = 100;
+    const batchSize = 10; // Число параллельных запросов
+    let successCount = 0;
+
+    output.textContent = `Запущено 0/${totalRequests}...`;
+
+    for (let i = 0; i < totalRequests; i += batchSize) {
+        const batchPromises = [];
+
+        // Создаем пачку промисов
+        for (let j = 0; j < batchSize && i + j < totalRequests; j++) {
+            batchPromises.push(get_api_result());
+        }
+
+        // Обрабатываем пачку
+        const batchResults = await Promise.allSettled(batchPromises);
+
+        // Обновляем UI для каждой успешной строки
+        batchResults.forEach(result => {
+            if (result.status === 'fulfilled' && result.value) {
+                successCount++;
+                str_output.textContent = `Последняя строка: ${result.value}`;
+                output.textContent = `Успешно: ${successCount}/${totalRequests}`;
+                progressBar.style.background = `linear-gradient(90deg, #4CAF50 ${successCount}%, #ddd ${successCount/10}%)`;
+            }
+        });
+
+        // Искусственная задержка между пачками (опционально)
+        await new Promise(resolve => setTimeout(resolve, 50));
     }
 
-    tg.sendData(JSON.stringify(data));
+    output.textContent = `Готово! Успешно: ${successCount}/${totalRequests}`;
 });
 
 async function get_api_result() {
