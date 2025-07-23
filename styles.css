@@ -35,8 +35,8 @@ img {
     font-style: 20px;
     font-weight: 500;
     cursor: pointer;
-    color: var(--tg-theme-button-text-color);
-    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color, #fff);
+    background: var(--tg-theme-button-color, #3390ec);
 }
 
 .test-form {
@@ -50,7 +50,7 @@ input {
     border: 2px solid #535353;
     padding: 15px 10px;
     margin: 10px 0 0;
-    background: var(--tg-theme-section-separator-color);
+    background: var(--tg-theme-section-separator-color, #ebebeb);
     color: var(--tg-theme-text-color);
     transition: all .2s;
 }
