@@ -47,7 +47,7 @@ api_btn.addEventListener("click", async () => {
             if (result.status === 'fulfilled' && result.value) {
                 successCount++;
                 str_output.textContent = `Последняя строка: ${result.value}`;
-                output.textContent = `Запущено 0/${totalRequests}... Успешно: ${successCount}/${totalRequests}`;
+                output.textContent = `Запущено ${i}/${totalRequests}... Успешно: ${successCount}/${totalRequests}`;
                 progressBar.style.background = `linear-gradient(90deg, #4CAF50 ${successCount}%, #ddd ${successCount/10}%)`;
             }
         });
