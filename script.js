@@ -47,7 +47,7 @@ api_btn.addEventListener("click", async () => {
             if (result.status === 'fulfilled' && result.value) {
                 successCount++;
                 str_output.textContent = `Последняя строка: ${result.value}`;
-                output.textContent = `Успешно: ${successCount}/${totalRequests}`;
+                output.textContent = `Запущено 0/${totalRequests}... Успешно: ${successCount}/${totalRequests}`;
                 progressBar.style.background = `linear-gradient(90deg, #4CAF50 ${successCount}%, #ddd ${successCount/10}%)`;
             }
         });
@@ -60,6 +60,7 @@ api_btn.addEventListener("click", async () => {
 });
 
 async function get_api_result() {
+//    return '1233123'
     const api_link = 'https://www.random.org/strings/?num=1&len=12&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new';
     try {
         const response = await fetch(api_link);
