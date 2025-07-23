@@ -17,9 +17,9 @@ fBtn.addEventListener("click", () => {
 
 
 sBtn.addEventListener("click", () => {
-    let title = document.getElementsByClassName("title-inp")[0];
-    let description = document.getElementsByClassName("desc-inp")[0];
-    let text = document.getElementsByClassName("text-inp")[0];
+    let title = document.getElementsById("title-inp")[0];
+    let description = document.getElementsById("desc-inp")[0];
+    let text = document.getElementsById("text-inp")[0];
 
 
     let data = {
