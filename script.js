@@ -49,9 +49,9 @@ api_btn.addEventListener("click", async () => {
         batchResults.forEach(result => {
             if (result.status === 'fulfilled' && result.value) {
                 successCount++;
-                str_output.textContent = `Последняя строка: ${result.value}`;
+                str_output.textContent = `Последние полученные данные: ${result.value}`;
                 output.textContent = `Запущено ${i}/${totalRequests}... Успешно: ${successCount}/${totalRequests}`;
-                progressBar.style.background = `linear-gradient(90deg, #4CAF50 ${successCount}%, #ddd ${successCount/totalRequests/10}%)`;
+                progressBar.style.background = `linear-gradient(90deg, #4CAF50 ${successCount*100/totalRequests}%, #ddd ${successCount*100/totalRequests}%)`;
             }
         });
 
@@ -64,7 +64,8 @@ api_btn.addEventListener("click", async () => {
 
 async function get_api_result() {
 //    return '1233123'
-    const api_link = 'https://www.random.org/strings/?num=1&len=12&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new';
+//    const api_link = 'https://www.random.org/strings/?num=1&len=12&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new';
+    const api_link = 'https://www.random.org/integers/?num=1&min=0&max=9&col=1&base=10&format=plain&rnd=new';
     try {
         const response = await fetch(api_link);
         if (!response.ok) {
