@@ -17,6 +17,7 @@ console.log("tg", tg);
 
 let fBtn = document.getElementsByClassName("f-btn")[0]
 let sBtn = document.getElementsByClassName("s-btn")[0]
+let user_btn = document.getElementsByClassName("user-btn")[0]
 let api_btn = document.getElementsByClassName("api-btn")[0]
 
 fBtn.addEventListener("click", () => {
@@ -25,6 +26,14 @@ fBtn.addEventListener("click", () => {
 });
 
 
+user_btn.addEventListener("click", () => {
+    const data = {
+        text: "Привет, это сообщение из мини-приложения!",
+        userId: Telegram.WebApp.initDataUnsafe.user.id,
+    };
+
+    tg.sendData(JSON.stringify(data));
+});
 
 
 // Обработчик клика для api_btn
@@ -85,6 +94,20 @@ async function get_api_result() {
     }
 }
 
+sBtn.addEventListener("click", () => {
+    let title = document.getElementsByClassName("title-inp")[0];
+    let description = document.getElementsByClassName("desc-inp")[0];
+    let text = document.getElementsByClassName("text-inp")[0];
+
+
+    let data = {
+        title: title.value,
+        desc: description.value,
+        text: text.value
+    }
+
+    tg.sendData(JSON.stringify(data));
+});
 
 
 
