@@ -1,10 +1,15 @@
 let tg = window.Telegram.WebApp;
 let dat_unsafe = tg.initDataUnsafe
 
+const heading = document.createElement('h3');
+heading.textContent = 'Параметры ссылки:';
+const urlParams = new URLSearchParams(window.location.search);
 
 displayObjectTree(dat_unsafe)
+document.body.appendChild(heading);
+displayObjectTree(Object.fromEntries(urlParams))
 
-const urlParams = new URLSearchParams(window.location.search);
+
 console.log("%cДанные:", "font-size: 20px; font-weight: bold;");
 console.log('urlParams', Object.fromEntries(urlParams))
 console.log("tg.initDataUnsafe", tg.initDataUnsafe)
@@ -29,7 +34,7 @@ api_btn.addEventListener("click", async () => {
     const progressBar = document.getElementsByClassName('progress-bar')[0];
 
     const totalRequests = 50;
-    const batchSize = 5; // Число параллельных запросов
+    const batchSize = 5;
     let successCount = 0;
 
     output.textContent = `Запущено 0/${totalRequests}...`;
