@@ -4,8 +4,11 @@ let dat_unsafe = tg.initDataUnsafe
 
 displayObjectTree(dat_unsafe)
 
+console.log("%Данные:", "font-size: 20px; font-weight: bold;");
 console.log("tg.initDataUnsafe", tg.initDataUnsafe)
 console.log("tg", tg);
+const urlParams = new URLSearchParams(window.location.search);
+console.log('urlParams', urlParams)
 
 let fBtn = document.getElementsByClassName("f-btn")[0]
 let sBtn = document.getElementsByClassName("s-btn")[0]
@@ -48,7 +51,7 @@ api_btn.addEventListener("click", async () => {
                 successCount++;
                 str_output.textContent = `Последняя строка: ${result.value}`;
                 output.textContent = `Запущено ${i}/${totalRequests}... Успешно: ${successCount}/${totalRequests}`;
-                progressBar.style.background = `linear-gradient(90deg, #4CAF50 ${successCount}%, #ddd ${successCount/10}%)`;
+                progressBar.style.background = `linear-gradient(90deg, #4CAF50 ${successCount}%, #ddd ${successCount/totalRequests/10}%)`;
             }
         });
 
