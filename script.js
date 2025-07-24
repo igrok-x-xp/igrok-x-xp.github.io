@@ -4,7 +4,7 @@ let dat_unsafe = tg.initDataUnsafe
 
 displayObjectTree(dat_unsafe)
 
-console.log("%Данные:", "font-size: 20px; font-weight: bold;");
+console.log("%cДанные:", "font-size: 20px; font-weight: bold;");
 console.log("tg.initDataUnsafe", tg.initDataUnsafe)
 console.log("tg", tg);
 const urlParams = new URLSearchParams(window.location.search);
