@@ -8,7 +8,7 @@ console.log("%cДанные:", "font-size: 20px; font-weight: bold;");
 console.log("tg.initDataUnsafe", tg.initDataUnsafe)
 console.log("tg", tg);
 const urlParams = new URLSearchParams(window.location.search);
-console.log('urlParams', urlParams)
+console.log('urlParams', Object.fromEntries(urlParams))
 
 let fBtn = document.getElementsByClassName("f-btn")[0]
 let sBtn = document.getElementsByClassName("s-btn")[0]
