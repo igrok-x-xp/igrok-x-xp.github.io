@@ -26,14 +26,14 @@ fBtn.addEventListener("click", () => {
 });
 
 
-user_btn.addEventListener("click", () => {
-    const data = {
-        text: "Привет, это сообщение из мини-приложения!",
-        userId: Telegram.WebApp.initDataUnsafe.user.id,
-    };
-
-    tg.sendData(JSON.stringify(data));
-});
+//user_btn.addEventListener("click", () => {
+//    const data = {
+//        text: "Привет, это сообщение из мини-приложения!",
+//        userId: Telegram.WebApp.initDataUnsafe.user.id,
+//    };
+//
+//    tg.sendData(JSON.stringify(data));
+//});
 
 
 // Обработчик клика для api_btn
